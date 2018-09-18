@@ -1,5 +1,7 @@
 package com.Labb2;
 import java.util.*;
+import java.util.stream.Collectors;
+
 public class SimpleDiceGame {
 
 public static int dices;
@@ -83,10 +85,12 @@ public static int numberOfRounds;
     private static ArrayList<Player> getWinners(ArrayList<Player> players)
     {
 
+       Player player = players.stream().max((p1,p2) -> Integer.compare(p1.getPlayerScore(),p2.getPlayerScore())).get();  // <--- Filter som ska jämnföra spelarnas poäng
 
-
-
-
+            if(player.getPlayerScore()  == 0){
+                System.out.println("Ingen vinnare..");
+            }else
+        System.out.println("Vinnare: " +player.getPlayerName() +" "+ "Med"+ " " +player.getPlayerScore()+ " "+"Poäng");
 
 
         return players;
